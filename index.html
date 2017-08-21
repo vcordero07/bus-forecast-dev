@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="img/favicon.ico" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/css/bootstrap-dialog.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Concert+One|Roboto"> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,700" rel="stylesheet">
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css" type="text/css" />
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/main.css">
+
+  <title>Bus Forecast</title>
+</head>
+
+
+<body>
+  <div class="sidebar one-edge-shadow">
+    <div class="logo"><img src="img/bus-forecast-Logo-64.png" class="img-logo" alt="Bus Forecast Logo" width="64" height="64"> Bus<span class="txt-bolder">Forecast</span></div>
+    <nav class="row">
+      <div class="col-xs-3 col-md-12"><a href="" class="nav-item" data-toggle="tooltip" data-placement="top" title="Home"><i class="fa fa-home"></i><span class="nav-btns"> Home</span></a></div>
+      <div class="col-xs-3 col-md-12"><a href="#" class="nav-item find-bus-by-route search-by-opts" data-toggle="tooltip" data-placement="top" title="Routes"><i class="fa fa-bus"></i><span class="nav-btns"> Routes</span></a></div>
+      <div class="col-xs-3 col-md-12"><a href="#" class="nav-item active find-bus-by-location search-by-opts" data-toggle="tooltip" data-placement="top" title="Nearby"><i class="fa fa-map-marker"></i><span class="nav-btns"> Nearby</span></a></div>
+      <div class="col-xs-3 col-md-12"><a href="#" class="nav-item info-btn" data-toggle="tooltip" data-placement="top" title="Info"> <i class="fa fa-info-circle"></i><span class="nav-btns"> Info</span></a></div>
+    </nav>
+  </div>
+
+  <div class="main-content">
+
+    <nav role="navigation">
+      <a class="btn btn-primary options-btn" href="#" data-toggle="tooltip" data-placement="top" title="Back">
+      <i class="fa fa-arrow-circle-left"></i><span class="opt-btns"> </span></a>
+
+      <div class="by-location-opts">
+        <div class="loading-bar">
+          <span>{</span> loading <span>}</span>
+        </div>
+      </div>
+
+      <div class="by-route-opts">
+        <select class="selectpicker show-menu-arrow bus-selector" id="bus-list" name="MBTA-Bus-Line" data-style="btn-selector" data-live-search="true">
+          <option value="">Select bus</option>
+        </select>
+
+        <div class="btn-group direction-opt" data-toggle='buttons' role="menuitemradio">
+          <label for="bus-outbound" class="btn btn-primary active btn-direction" data-toggle="tooltip" data-placement="top" title="Outbound"><i class="fa fa-arrow-down" aria-hidden="true"></i><input type="radio" name="bus-direction" title="Outbound" checked value="0"><span class="direction-btns"> Outbound</span></label>
+          <label for="bus-inbound" class="btn btn-primary btn-direction" data-toggle="tooltip" data-placement="top" title="Inbound"><i class="fa fa-arrow-up" aria-hidden="true"></i><input type="radio" name="bus-direction" title="Inbound" value="1"><span class="direction-btns"> Inbound</span></label>
+        </div>
+      </div>
+    </nav>
+
+
+    <section id="bus-stop-info" class="row" role="main">
+      <div class="bus-container col-sm-6">
+        <div id="cd-timeline" class="cd-container">
+          <div class="error-catch-message"></div>
+          <div class="stops-title">
+            <h5>Stops</h5></div>
+          <ul class="list-group bus-stop-list"></ul>
+        </div>
+      </div>
+      <div class="route-map-container col-sm-6 ">
+        <div class="route-map"></div>
+        <div class="map-stop-location"></div>
+      </div>
+    </section>
+
+  </div>
+
+  <div id="footer-content"></div>
+
+  <footer role="contentinfo">
+    &copy; Bus Forecast 2017 | Data by <a href="https://www.mbta.com/rider_tools/developers/" target="_blank">MBTA</a>,
+    <a href="https://darksky.net/dev/" target="_blank">DarkSky</a>,
+    <a href="https://developers.google.com/maps/" target="_blank">Google</a> | Skycons by <a href="https://forecast.io" target="_blank">Forecast</a> & <a href="https://adamwhitcroft.com/climacons/" target="_blank">Climacons</a>
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/js/bootstrap-dialog.js"></script>
+
+  <script type="text/javascript" src="js/skycons.js" charset="utf-8"></script>
+  <script type="text/javascript" src="js/app.js" charset="utf-8"></script>
+</body>
+
+</html>
