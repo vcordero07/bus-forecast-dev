@@ -4,7 +4,6 @@
   font-family: 'Raleway', sans-serif;
 }
 
-
 /*------generic classes-------*/
 
 html,
@@ -77,7 +76,6 @@ h6 {
   padding: 1px 1px;
 }
 
-
 /*-----media queries------*/
 
 @media screen and (max-width: 400px) {
@@ -105,7 +103,6 @@ h6 {
   }
 }
 
-
 /*-----header------*/
 
 .fullBgImg {
@@ -131,7 +128,6 @@ h6 {
   position: relative;
 }
 
-
 /*-----nav-menu-----*/
 
 .by-location-opts,
@@ -151,7 +147,6 @@ h6 {
   border-radius: 3px;
   color: #fff;
 }
-
 
 /*.bus-selector,
 .search-by-opts:hover,
@@ -273,7 +268,6 @@ h6 {
   color: #fff;
 }
 
-
 /*-----main-content-----*/
 
 #bus-stop-info {
@@ -285,11 +279,12 @@ h6 {
   position: relative;
   margin-top: 5px;
   border-radius: 2px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
   margin-bottom: 15px;
 }
 
-  /* this is the vertical line */
+/* this is the vertical line */
+
 /*.bus-stop-list::before {
   background-color: #e67e22;
   content: '';
@@ -411,7 +406,7 @@ h6 {
   color: #fff;
   padding-left: 3px;
   border-radius: 2px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
 }
 
 .sm-screen-width {
@@ -436,9 +431,8 @@ h6 {
   margin-top: 5px;
   border-radius: 2px;
   background: #ecf0f1;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
 }
-
 
 /*-----loading bar------*/
 
@@ -467,7 +461,6 @@ h6 {
   }
 }
 
-
 /*-----footer content-----*/
 
 #footer-content {
@@ -480,7 +473,6 @@ h6 {
   position: relative;
 }
 
-
 /*-----modal content-----*/
 
 .bootstrap-dialog.type-warning .modal-header {
@@ -490,7 +482,6 @@ h6 {
 .bootstrap-dialog.type-primary .modal-header {
   background-color: #3498DB;
 }
-
 
 /*.modal-dialog {
     position: relative;
@@ -564,7 +555,6 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-size: 1.5em;
   background-size: cover;
   background-position: top left;
@@ -606,11 +596,11 @@ h6 {
 
 .bus-grid-time-item:hover {
   color: white;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.85);
+  /* text-shadow: 0 0 5px rgba(0, 0, 0, 0.85); */
 }
 
 .one-edge-shadow {
-  box-shadow: 0 10px 20px -3px rgba(0,0,0,0.19);
+  /* box-shadow: 0 10px 20px -3px rgba(0,0,0,0.19); */
 }
 
 /*.bus-container  {
