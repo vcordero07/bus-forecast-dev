@@ -27,12 +27,9 @@ const endPoints = {
   MBTARoutes: routesURL(), //'https://realtime.mbta.com/developer/api/v2/routes',
   MBTABusStop: stopsByRouteURL(), //'https://realtime.mbta.com/developer/api/v2/stopsbyroute',
   MBTAPredictionsByStop: predictionsByStopURL(), //"https://realtime.mbta.com/developer/api/v2/predictionsbystop",
-  MBTAStopsByLocation:
-    "https://realtime.mbta.com/developer/api/v2/stopsbylocation",
+  MBTAStopsByLocation: "https://realtime.mbta.com/developer/api/v2/stopsbylocation",
   MBTARoutesByStop: "https://realtime.mbta.com/developer/api/v2/routesbystop",
-  WeatherUnderground: `https://api.wunderground.com/api/${
-    apiKeys.WeatherUnderground
-  }/conditions/q/`,
+  WeatherUnderground: `https://api.wunderground.com/api/${ apiKeys.WeatherUnderground }/conditions/q/`,
   DarkSky: `https://api.darksky.net/forecast/${apiKeys.DarkSky}/`,
   gglMapsGeocode: `https://maps.googleapis.com/maps/api/geocode/json` //?latlng=40.714224,-73.961452&key=YOUR_API_KEY
 };
@@ -306,10 +303,11 @@ let generatePreditionsByStopData = data => {
     $(".error-msg").html(errorMsg);
     return;
   }
-
+console.log('test maktub data 1:', data.data[0].attributes.departure_time );
   if (busRouteID.constructor === Array) {
     //console.log('busRouteID.constructor = true');
     //console.log('busDirection:', busDirection);
+
     for (let x = 0; x < busRouteID.length; x++) {
       //if there is data display pass
       for (let i = 0; i < data.mode[0].route.length; i++) {
@@ -319,6 +317,7 @@ let generatePreditionsByStopData = data => {
           //console.log("data.mode.route", data.mode[0].route[i]);
           //use this to get only the most current predictions
           //recursiveIteration(data.mode[0].route[i])
+          console.log('test maktub data 1:', data.data[0].attributes.departure_time );
           $(".next-bus-predictions").append(
             `<div class="bus-grid-time-item smallb">Route ${
               busRouteID[x]
@@ -346,6 +345,7 @@ let generatePreditionsByStopData = data => {
   } else {
     //console.log('busRouteID.constructor = false');
     //if there is data display pass
+    console.log('data :',data );
     for (let i = 0; i < data.mode[0].route.length; i++) {
       if (data.mode[0].route[i].route_id === busRouteID) {
         let currentTime = new Date();
@@ -354,6 +354,7 @@ let generatePreditionsByStopData = data => {
         //use this to get only the most current predictions
         //recursiveIteration(data.mode[0].route[i])
         //use this to get all the predictions
+        console.log('test maktub data 1:', data.data[0].attributes.departure_time );
         data.mode[0].route[i].direction[0].trip.forEach(item => {
           //console.log('itemForEach:', Math.round(item.pre_away / 60));
           minTime = Math.round(item.pre_away / 60);
