@@ -166,6 +166,7 @@ let getScreenWidth = () => {
 };
 
 let getMapsData = (lat, lon, RoutesMap = null, RoutesPath = null) => {
+    console.log("getMapsData log:" );
   //console.log('lat, lon:', lat, lon);
   let mapElement;
   let paddingLeft = getScreenWidth();
@@ -230,6 +231,7 @@ let getMapsData = (lat, lon, RoutesMap = null, RoutesPath = null) => {
 };
 
 let getCurrentTime = () => {
+    console.log("getCurrentTime log:" );
   let time = new Date();
   let hours = time.getHours() > 12 ? time.getHours() - 12 : time.getHours();
   let am_pm = time.getHours() >= 12 ? "PM" : "AM";
@@ -244,6 +246,7 @@ let getCurrentTime = () => {
 };
 
 let generateRoutesData = response => {
+  console.log("generateRoutesData log:" );
   let routes = response.data;
   // TODO: may need to check for hidden routes and filter them out
   routes.forEach(route => console.log);
@@ -262,7 +265,7 @@ let generateRoutesData = response => {
 };
 
 let generateBusStopData = response => {
-  console.log("bus stop data:", response);
+  console.log("generateBusStopData log:" );
   let stops = response.data;
   let imgMarkerStr = "";
   let imgMarkerPath = "";
@@ -292,18 +295,25 @@ let generateBusStopData = response => {
   getMapsData(centerStop[0], centerStop[1], imgMarkerStr, imgMarkerPath);
 };
 
-let generatePreditionsByStopData = data => {
+
+//todo: convert date/time into minutes
+let generatePreditionsByStopData = response => {
+  console.log("generatePreditionsByStopData log:", response );
+  console.log("arrival_time", response.data["0"].attributes.arrival_time);
+  console.log("departure_time", response.data["0"].attributes.departure_time);
   resultElement = "";
   let validTime = "";
   let errorMsg = "";
   minTime = 0;
   //if there is not mode available for this route then display this message
-  if (!data.hasOwnProperty("mode")) {
+  if (!response.hasOwnProperty("mode")) {
     errorMsg = "No predictions available for this bus stop at this time 1.";
     $(".error-msg").html(errorMsg);
     return;
   }
-console.log('test maktub data 1:', data.data[0].attributes.departure_time );
+
+
+console.log('test maktub data 1:', response.data[0].attributes.departure_time );
   if (busRouteID.constructor === Array) {
     //console.log('busRouteID.constructor = true');
     //console.log('busDirection:', busDirection);
@@ -317,7 +327,7 @@ console.log('test maktub data 1:', data.data[0].attributes.departure_time );
           //console.log("data.mode.route", data.mode[0].route[i]);
           //use this to get only the most current predictions
           //recursiveIteration(data.mode[0].route[i])
-          console.log('test maktub data 1:', data.data[0].attributes.departure_time );
+          console.log('test maktub data 1:', response.data[0].attributes.departure_time );
           $(".next-bus-predictions").append(
             `<div class="bus-grid-time-item smallb">Route ${
               busRouteID[x]
@@ -345,7 +355,7 @@ console.log('test maktub data 1:', data.data[0].attributes.departure_time );
   } else {
     //console.log('busRouteID.constructor = false');
     //if there is data display pass
-    console.log('data :',data );
+    console.log('response :',response );
     for (let i = 0; i < data.mode[0].route.length; i++) {
       if (data.mode[0].route[i].route_id === busRouteID) {
         let currentTime = new Date();
@@ -532,6 +542,7 @@ let generateGeocodingData = data => {
 };
 
 let generateStopByLocationData = data => {
+    console.log("generateStopByLocationData log:" );
   let imgMarkerStr = "";
   let imgMarkerPath = "";
   resultElement = "";
@@ -559,6 +570,7 @@ let generateStopByLocationData = data => {
 };
 
 let generateRoutesByStopData = data => {
+    console.log("generateRoutesByStopData log:" );
   busRouteID = [];
   data.mode[0].route.forEach(item => {
     busRouteID.push(`${item.route_id}`);
@@ -567,6 +579,7 @@ let generateRoutesByStopData = data => {
 };
 
 let displayData = (data, display) => {
+    console.log("displayData log:", data, display );
   let resultElement;
   switch (display) {
     case "RoutesData":
@@ -638,6 +651,7 @@ let recursiveIteration = object => {
 };
 
 let getBusStopID = event => {
+  console.log('getBusStopID log:');
   //console.log(event.currentTarget);
   strLat = event.currentTarget.getAttribute("data-lat");
   strLon = event.currentTarget.getAttribute("data-lon");
@@ -661,6 +675,7 @@ let getBusStopID = event => {
 };
 
 let getSkyIcons = event => {
+  console.log('getSkyIcons log:');
   let keyEvent = event.toUpperCase().replace(/-/g, "_");
   let icons = new Skycons({
     color: "black"
@@ -671,6 +686,7 @@ let getSkyIcons = event => {
 };
 
 let getBusDirection = event => {
+  console.log('getBusDirection log:');
   if ($("select").val() === "") {
     hideShow([".stops-title"], []);
     BootstrapDialog.show({
@@ -720,6 +736,7 @@ let getClearMSG = options => {
 };
 
 let getLocation = () => {
+  console.log('getLocation log:');
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
@@ -743,6 +760,7 @@ let showPosition = position => {
 };
 
 let getGeoLocation = () => {
+  console.log('getGeoLocation log:');
   if (!MBTAQuery.lat) {
     return false;
   }
